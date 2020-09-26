@@ -1,0 +1,79 @@
+html {
+    font-size: 10px;
+    font-family: 'SF Pro Display', sans-serif;
+}
+
+
+.first-section {
+    background: url("../img/boks.jpg");
+    margin-top: 4.4rem;
+}
+
+.hero {
+    height: 69.2rem;
+    background-size: auto;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-top: .1rem solid #ffffff;
+    border-bottom: .1rem solid #ffffff;
+
+}
+
+.first-section-container, .second-section-container, .third-section-container {
+    color: #ffffff;
+    text-align: center;
+    padding-top: 12rem;
+    max-width: 90rem;
+    margin: 0 auto;
+}
+
+.first-title-heading, .second-title-heading, .third-title-heading {
+    font-size: 4.5rem;
+    line-height: 1.07143;
+    color: gold;
+}
+
+.first-description, .second-description, .our-advantages, .our-opportunities {
+    font-size: 1.8rem;
+    margin-top: .6rem;
+}
+
+.second-section {
+    background: url("../img/basketball.jpg");
+}
+
+.second-section-container {
+    padding-top: 10rem;
+}
+
+.our-advantages, .our-opportunities {
+    color: #ffffff;
+}
+
+.first-advantage, .second-advantage, .third-advantage, .fourth-advantage,
+.fifth-advantage, .first-opportunity, .second-opportunity,
+.third-opportunity, .fourth-opportunity {
+    line-height: 3;
+}
+
+.third-section {
+    background: url("../img/football.jpg");
+}
+
+@media screen and (max-width: 1000px) {
+    .hero {
+        height: 65rem;
+        background-size: auto 69.8rem;
+        background-position: bottom center;
+        background-repeat: no-repeat;
+    }
+
+    .first-title-heading, .second-title-heading, .third-title-heading {
+        font-size: 4rem;
+    }
+
+    .first-section-container, .second-section-container, .third-section-container {
+        max-width: 50rem;
+        margin: 0 auto;
+    }
+}
