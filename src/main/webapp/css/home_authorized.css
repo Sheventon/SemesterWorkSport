@@ -3,19 +3,21 @@ html {
     font-family: 'SF Pro Display', sans-serif;
 }
 
-
 .first-section {
     background: url("../img/boks.jpg");
-    margin-top: 4.4rem;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .hero {
     height: 69.2rem;
-    background-size: auto;
-    background-position: center;
+    background-position: center center;
     background-repeat: no-repeat;
+    background-size: cover;
     border-top: .1rem solid #ffffff;
     border-bottom: .1rem solid #ffffff;
+    min-width: 361px;
 
 }
 
@@ -40,6 +42,9 @@ html {
 
 .second-section {
     background: url("../img/basketball.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .second-section-container {
@@ -58,22 +63,37 @@ html {
 
 .third-section {
     background: url("../img/football.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
-@media screen and (max-width: 1000px) {
-    .hero {
-        height: 65rem;
-        background-size: auto 69.8rem;
-        background-position: bottom center;
-        background-repeat: no-repeat;
+@media screen and (max-width: 930px) {
+    .first-title-heading, .second-title-heading, .third-title-heading {
+        font-size: 3.5rem;
     }
 
-    .first-title-heading, .second-title-heading, .third-title-heading {
-        font-size: 4rem;
+    .first-description, .second-description, .our-advantages, .our-opportunities{
+        font-size: 1.7rem;
     }
 
     .first-section-container, .second-section-container, .third-section-container {
-        max-width: 50rem;
+        max-width: 85%;
+        margin: 0 auto;
+    }
+}
+
+@media screen and (max-width: 550px){
+    .first-title-heading, .second-title-heading, .third-title-heading {
+        font-size: 2.8rem;
+    }
+
+    .first-description, .second-description, .our-advantages, .our-opportunities{
+        font-size: 1.2rem;
+    }
+
+    .first-section-container, .second-section-container, .third-section-container {
+        max-width: 80%;
         margin: 0 auto;
     }
 }

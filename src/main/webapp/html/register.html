@@ -2,80 +2,46 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/register.css">
     <link rel="stylesheet" href="../css/header.css">
 </head>
 <body>
-<header>
-    <div class="header-container">
-        <nav class="nav">
-            <ul class="nav-list nav-list-mobile">
-                <li class="nav-item">
-                    <div class="mobile-menu">
-                        <span class="line line-top"></span>
-                        <span class="line line-bottom"></span>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a href="home_authorized.html" class="nav-link nav-link-main"></a>
-                </li>
-                <li>
-                    <a href="#" class="nav-link nav-link-bag"></a>
-                </li>
-            </ul>
 
-            <ul class="nav-list nav-list-larger">
-                <li class="nav-item">
-                    <a href="/home" class="nav-link nav-link-main" id="logo"></a>
-                </li>
-                <li>
-                    <a href="/home" class="nav-link nav-link-bag">Домой</a>
-                </li>
-                <li>
-                    <a href="sections.html" class="nav-link">Секции</a>
-                </li>
-                <li>
-                    <a href="timetable.html" class="nav-link">Расписание</a>
-                </li>
-                <li>
-                    <a href="coaches.html" class="nav-link">Тренеры</a>
-                </li>
-                <li>
-                    <a href="achievements.html" class="nav-link">Достижения</a>
-                </li>
-                <li>
-                    <a href="mailto:tores.fernando.real@gmail.com" class="nav-link">Написать на почту</a>
-                </li>
-                <li>
-                    <a href="/login" class="nav-link">Войти</a>
-                </li>
-            </ul>
-        </nav>
-    </div>
+<script type="text/javascript" src="../js/email_validator.js"></script>
+
+<header>
+    <div class="logotype">LOGO<span class="red"></span></div>
+    <nav>
+        <input id="menu__toggle" type="checkbox"/>
+        <label class="menu__btn" for="menu__toggle">
+            <span></span>
+        </label>
+        <ul class="menu__box">
+            <li><a class="menu__item" href="/home"><span class="red">Домой</span></a></li>
+            <li><a class="menu__item" href="#">Секции</a></li>
+            <li><a class="menu__item" href="#">Расписание</a></li>
+            <li><a class="menu__item" href="#">Тренеры</a></li>
+            <li><a class="menu__item" href="#">Достижения</a></li>
+            <li><a class="menu__item" href="mailto:tores.fernando.real@gmail.com">Написать на почту</a></li>
+        </ul>
+    </nav>
 </header>
+
 <div class="register-page">
     <div class="form">
-        <form class="register-form">
-            <input type="text" placeholder="ФИО"/>
-            <input type="password" placeholder="Электронная почта"/>
-            <input type="text" placeholder="Пароль"/>
+        <form class="register-form" id="form" action="/registration" method="post">
+            <input type="text" placeholder="ФИО" required=""/>
+            <input type="email" id="email" placeholder="Электронная почта" name="email" onclick="email_validator()" onkeydown="email_validator()" required/>
+            <span id="email-message"></span>
+            <input type="password" placeholder="Пароль" required=""/>
             <input class="remember-input" type="checkbox" id="remember" name="remember">
             <label for="remember" class="remember-label">Запомнить меня</label>
-            <button>СОЗДАТЬ</button>
+            <input type="submit" class="input-button" value="СОЗДАТЬ">
             <p class="message">Уже есть аккаунт? <a href="/login">Войдите</a></p>
         </form>
     </div>
 </div>
-<!--<footer>
-    <div class="footer-container">
-        <h2 class="road-to-the-dream">Спортивный комплекс "Road To The Dream"</h2>
-        <div class="footer-elements">
-            <a href="https://instagram.com" class="instagram">Instagram</a>
-            <a href="mailto:tores.fernando.real@gmail.com" class="mail">Mail</a>
-        </div>
-    </div>
-</footer>-->
 </body>
 </html>

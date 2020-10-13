@@ -58,10 +58,6 @@ p {
     font-size: 16px;
 }
 
-/*.wrap {
-    border-bottom: 2px solid #f2f2f2;
-}*/
-
 .section-3 h4 {
     font-size: 25px;
 }
@@ -94,7 +90,6 @@ p {
     text-transform: uppercase;
     outline: none;
     overflow: hidden;
-    /*position: relative;*/
     color: #ffffff;
     font-weight: 700;
     font-size: 15px;
