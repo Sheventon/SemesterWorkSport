@@ -9,7 +9,7 @@
 </head>
 <body>
 
-<script type="text/javascript" src="../js/email_validator.js"></script>
+<script type="text/javascript" src="../js/form_validator.js"></script>
 
 <header>
     <div class="logotype">LOGO<span class="red"></span></div>
@@ -20,9 +20,6 @@
         </label>
         <ul class="menu__box">
             <li><a class="menu__item" href="/home"><span class="red">Домой</span></a></li>
-<!--
-            <li><a class="menu__item" href="#">Личный кабинет</a></li>
--->
             <li><a class="menu__item" href="#">Секции</a></li>
             <li><a class="menu__item" href="#">Расписание</a></li>
             <li><a class="menu__item" href="#">Тренеры</a></li>
@@ -35,14 +32,37 @@
 <div class="login-page">
     <div class="form">
         <form class="login-for" id="form" action="/login" method="post">
-            <input type="email" id="email" placeholder="Электронная почта" name="email" onclick="email_validator()" onkeydown="email_validator()" required/>
+            <input type="email" id="email" placeholder="Электронная почта" name="email"
+                   onblur="email_validator()"
+                   onmouseover="email_validator()" required/>
             <span id="email-message"></span>
-            <input type="password" placeholder="Пароль" name="password" required=""/>
+
+            <input type="password" placeholder="Пароль" id="password" name="password" required=""/>
+
             <input class="remember-input" type="checkbox" id="remember" name="remember">
             <label for="remember" class="remember-label">Запомнить меня</label>
-            <input type="submit" class="input-button" value="ВОЙТИ">
-            <p class="message">Зарегистрироваться <a href="/registration">Создать аккаунт</a></p>
+
+<!--
+            <input type="button" class="input-button" value="ВОЙТИ" onclick="login_validator()">
+-->
+            <input type="button" class="input-button" value="ВОЙТИ" onclick="login_validator()">
+            <p class="message">У меня нет аккаунта <a href="/registration">Создать аккаунт</a></p>
         </form>
+
+<!--
+            <input type="email" id="email" placeholder="Электронная почта" name="email"
+                   onblur="form_validator()"
+                   onmouseover="form_validator()" required/>
+            <span id="email-message"></span>
+
+            <input type="password" id="password" placeholder="Пароль" required=""/>
+
+            <input class="remember-input" type="checkbox" id="remember" name="remember">
+            <label for="remember" class="remember-label">Запомнить меня</label>
+            <input type="button" class="input-button" value="СОЗДАТЬ" onclick="submit_validator()">
+            <p class="message">Уже есть аккаунт? <a href="/login">Войдите</a></p>
+-->
+
     </div>
 </div>
 </body>
