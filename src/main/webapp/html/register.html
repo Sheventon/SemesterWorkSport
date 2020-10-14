@@ -9,7 +9,7 @@
 </head>
 <body>
 
-<script type="text/javascript" src="../js/email_validator.js"></script>
+<script type="text/javascript" src="../js/form_validator.js"></script>
 
 <header>
     <div class="logotype">LOGO<span class="red"></span></div>
@@ -32,13 +32,22 @@
 <div class="register-page">
     <div class="form">
         <form class="register-form" id="form" action="/registration" method="post">
-            <input type="text" placeholder="ФИО" required=""/>
-            <input type="email" id="email" placeholder="Электронная почта" name="email" onclick="email_validator()" onkeydown="email_validator()" required/>
+            <input type="text" id="fio" placeholder="ФИО"
+                   onblur="name_validator()"
+                   onmouseover="name_validator()" required=""/>
+            <span id="name-message"></span>
+
+            <input type="email" id="email" placeholder="Электронная почта" name="email"
+                   onblur="email_validator()"
+                   onmouseover="email_validator()" required/>
             <span id="email-message"></span>
-            <input type="password" placeholder="Пароль" required=""/>
+
+            <input type="password" id="password" placeholder="Пароль" required=""/>
+
             <input class="remember-input" type="checkbox" id="remember" name="remember">
             <label for="remember" class="remember-label">Запомнить меня</label>
-            <input type="submit" class="input-button" value="СОЗДАТЬ">
+
+            <input type="button" class="input-button" value="СОЗДАТЬ" onclick="submit_validator()">
             <p class="message">Уже есть аккаунт? <a href="/login">Войдите</a></p>
         </form>
     </div>
