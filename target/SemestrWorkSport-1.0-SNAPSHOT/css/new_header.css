@@ -1,0 +1,291 @@
+/*
+*, *::before, ::after {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 10px;
+    font-family: 'SF Pro Display', sans-serif;
+}
+
+a {
+    display: block;
+    text-decoration: none;
+}
+
+.header-container {
+    max-width: 98rem;
+    margin: 0 auto;
+    padding: 0 2.2rem;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1400;
+    height: 4.4rem;
+    background-color: rgba(0, 0, 0, .8);
+    backdrop-filter: blur(2rem);
+}
+
+.mobile-menu {
+    display: none;
+}
+
+.nav-list {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 -1rem;
+}
+
+.nav-link-main#mobile {
+    width: 4.8rem;
+    height: 4.8rem;
+    content: url("../img/icon.webp");
+    display: none;
+}
+
+.nav-link {
+    font-size: 1.4rem;
+    color: #ffffff;
+    padding: 0 1rem;
+    transition: opacity .5s;
+}
+
+.nav-link:hover {
+    opacity: .7;
+}
+
+.nav-item-hidden {
+    width: 4.4rem;
+    height: 4.4rem;
+    content: url("../img/icon.webp");
+    display: none;
+}
+
+a.nav-link-main#logo {
+    height: 4.4rem;
+    width: 4.4rem;
+    content: url("../img/icon.webp");
+}
+
+@media screen and (max-width: 711px) {
+    header {
+        height: 4.8rem;
+        transition: background .36s cubic-bezier(0.32, 0.08, 0.24, 1),
+        height .56s cubic-bezier(0.32, 0.08, 0.24, 1);
+    }
+
+
+
+    .header-container {
+        padding: 0;
+    }
+
+    .nav-list {
+        margin-top: 0;
+    }
+
+    .nav-list-mobile {
+        display: flex;
+    }
+
+    .nav-item {
+        width: 4.8rem;
+        height: 4.8rem;
+        display: flex;
+        justify-content: center;
+    }
+
+    .mobile-menu {
+        position: relative;
+        z-index: 1500;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+    }
+
+    .line {
+        position: absolute;
+        width: 1.7rem;
+        height: 1px;
+        background-color: #ffffff;
+        transition: margin-top .3192s cubic-bezier(0.44, 0.44, 0.12, 0.96);
+    }
+
+    .line-top{
+        margin-top: 1px;
+        margin-left: 1rem;
+    }
+
+    .line-bottom {
+        margin-top: -1rem;
+        margin-left: 1rem;
+    }
+
+    .active .line-top {
+        margin-top: 0;
+        transform: rotate(45deg);
+        transition: margin-top .3192s cubic-bezier(0.44, 0.44, 0.12, 0.96);
+    }
+
+    .active .line-bottom {
+        margin-top: 0;
+        transform: rotate(-45deg);
+        transition: margin-top .3192s cubic-bezier(0.44, 0.44, 0.12, 0.96);
+    }
+
+    header .mobile-menu .active {
+        height: 100%;
+        background-color: #000000;
+    }
+
+    .nav-link-main {
+        width: 4.8rem;
+        height: 4.8rem;
+        position: relative;
+        z-index: 1500;
+    }
+
+    .nav{
+        position: relative;
+    }
+
+    .nav-link {
+        font-size: 1.7rem;
+        padding: 0;
+        margin: 0 auto;
+    }
+
+    .nav-list-larger {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 0;
+        height: 0;
+        display: block;
+        padding: 10.5rem 5rem;
+        z-index: 1000;
+        box-sizing: border-box;
+        opacity: 0;
+        transition: opacity .3s;
+        background-color: rgba(0, 0, 0, 0.7);
+    }
+
+    .active .nav-list-larger {
+        width: 100vh;
+        height: 100vh;
+        opacity: 1;
+    }
+
+     .nav-link .active {
+        width: 100%;
+        justify-content: flex-start;
+        border-bottom: 2px solid rgba(255, 255, 255, 1);
+    }
+
+    .active .nav-list-larger .nav-item {
+        animation: fadeIn 3s ease-in;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+}*/
+
+
+
+/*
+<header>
+    <div class="header-container">
+        <nav class="nav">
+            <ul class="nav-list nav-list-mobile">
+                <li class="nav-item">
+                    <div class="mobile-menu">
+                        <span class="line line-top"></span>
+                        <span class="line line-bottom"></span>
+                    </div>
+                </li>
+
+                <div class="mobile-menu">
+                    <ul class="nav-list nav-list-larger">
+                        <li class="nav-item nav-item-hidden">
+                            <a href="/home_authorized" class="nav-link nav-link-home"></a>
+                        </li>
+                        <li>
+                            <a href="/home" class="nav-link nav-link-bag">Домой</a>
+                        </li>
+                        <li>
+                            <a href="sections.html" class="nav-link">Секции</a>
+                        </li>
+                        <li>
+                            <a href="timetable.html" class="nav-link">Расписание</a>
+                        </li>
+                        <li>
+                            <a href="coaches.html" class="nav-link">Тренеры</a>
+                        </li>
+                        <li>
+                            <a href="achievements.html" class="nav-link">Достижения</a>
+                        </li>
+                        <li>
+                            <a href="mailto:tores.fernando.real@gmail.com" class="nav-link">Написать на почту</a>
+                        </li>
+                        <li>
+                            <a href="/login" class="nav-link">Войти</a>
+                        </li>
+                    </ul>
+                </div>
+
+
+                &lt;!&ndash;<li class="nav-item">
+                    <a href="/home_authorized" class="nav-link nav-link-main" id="mobile"></a>
+                </li>&ndash;&gt;
+            </ul>
+
+            <ul class="nav-list nav-list-larger">
+                &lt;!&ndash;<li class="nav-item nav-item-hidden">
+                    <a href="/home_authorized" class="nav-link nav-link-home"></a>
+                </li>&ndash;&gt;
+                <li class="nav-item">
+                    <a href="/home" class="nav-link nav-link-main" id="logo"></a>
+                </li>
+                <li>
+                    <a href="/home" class="nav-link nav-link-bag">Домой</a>
+                </li>
+                <li>
+                    <a href="sections.html" class="nav-link">Секции</a>
+                </li>
+                <li>
+                    <a href="timetable.html" class="nav-link">Расписание</a>
+                </li>
+                <li>
+                    <a href="coaches.html" class="nav-link">Тренеры</a>
+                </li>
+                <li>
+                    <a href="achievements.html" class="nav-link">Достижения</a>
+                </li>
+                <li>
+                    <a href="mailto:tores.fernando.real@gmail.com" class="nav-link">Написать на почту</a>
+                </li>
+                <li>
+                    <a href="/login" class="nav-link">Войти</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+*/

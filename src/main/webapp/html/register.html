@@ -23,7 +23,7 @@
             <li><a class="menu__item" href="#">Секции</a></li>
             <li><a class="menu__item" href="#">Расписание</a></li>
             <li><a class="menu__item" href="#">Тренеры</a></li>
-            <li><a class="menu__item" href="#">Достижения</a></li>
+            <li><a class="menu__item" href="/sql">Достижения</a></li>
             <li><a class="menu__item" href="mailto:tores.fernando.real@gmail.com">Написать на почту</a></li>
         </ul>
     </nav>
@@ -31,20 +31,23 @@
 
 <div class="register-page">
     <div class="form">
-        <form class="register-form" id="form" action="/registration" method="post">
-            <input type="text" id="fio" placeholder="ФИО"
+        <form class="register-form" id="form" action="/signup" method="post">
+            <input type="text" id="name" name="name" placeholder="Имя"
                    onblur="name_validator()"
                    onmouseover="name_validator()" required=""/>
             <span id="name-message"></span>
-
+            <input type="text" id="surname" name="surname" placeholder="Фамилия"
+                   onblur="name_validator()"
+                   onmouseover="name_validator()" required=""/>
+            <span id="surname-message"></span>
             <input type="email" id="email" placeholder="Электронная почта" name="email"
                    onblur="email_validator()"
                    onmouseover="email_validator()" required/>
             <span id="email-message"></span>
 
-            <input type="password" id="password" placeholder="Пароль" required=""/>
+            <input type="password" id="password" name="password" placeholder="Пароль" required=""/>
 
-            <input class="remember-input" type="checkbox" id="remember" name="remember">
+            <input class="remember-input" type="checkbox" id="remember" name="remember_me">
             <label for="remember" class="remember-label">Запомнить меня</label>
 
             <input type="button" class="input-button" value="СОЗДАТЬ" onclick="submit_validator()">

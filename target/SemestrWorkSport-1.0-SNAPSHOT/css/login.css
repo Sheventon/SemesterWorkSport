@@ -1,28 +1,32 @@
 body {
     background: url("../img/login_and_register_back.jpg");
-    background-size: auto;
-    background-position: center;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    height: 100vh;
+    font-family: "SF Pro Display", sans-serif;
 }
 
 .login-page {
     width: 360px;
-    padding: 8% 0 0;
-    margin: auto;
+    padding: 25vh 0 0;
+    margin: 0 auto;
+    height: calc(100% - 25vh);
 }
 
 .form {
-    position: relative;
-    z-index: 1;
     background: #FFFFFF;
     max-width: 360px;
-    margin: 0 auto 100px;
+    margin: 0 auto ;
     padding: 45px;
     text-align: center;
+    overflow: hidden;
+    position: inherit;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 
 .form input {
-    font-family: "SF Pro Display", sans-serif;
     outline: 0;
     background: #f2f2f2;
     width: 100%;
@@ -33,7 +37,7 @@ body {
     font-size: 14px;
 }
 
-.form button {
+.form .input-button {
     font-family: "SF Pro Display", sans-serif;
     text-transform: uppercase;
     outline: 0;
@@ -46,14 +50,14 @@ body {
     cursor: pointer;
 }
 
-.form button:hover, .form button:active, .form button:focus {
+.form .input-button:hover, .form button:active, .form button:focus {
     background-color: rgba(0, 0, 0, .8);
 }
 
 .form .message {
-    margin: 15px 0 0;
+    margin: 0;
     color: #b3b3b3;
-    font-size: 12px;
+    font-size: 15px;
 }
 
 .form .message a {
@@ -66,7 +70,6 @@ body {
     margin: 0;
     padding: 0;
     float: left;
-
 }
 
 .remember-label {
@@ -74,4 +77,14 @@ body {
     padding: 0;
     float: left;
     font-size: 14px;
+}
+
+#email-message {
+    display: block;
+    color: #ff0000;
+    font-size: 14px;
+}
+
+.visible {
+    margin-bottom: 20px;
 }
