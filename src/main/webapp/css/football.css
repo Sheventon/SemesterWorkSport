@@ -1,0 +1,23 @@
+.section-1 {
+    background-image: url("../img/football/football_section.jpg");
+}
+
+.plus-icon-1 {
+    content: url("../img/football/soccer-ball.png");
+}
+
+.plus-icon-2 {
+    content: url("../img/football/running_man.png");
+}
+
+.plus-icon-3 {
+    content: url("../img/football/friends.png");
+}
+
+.plus-icon-4 {
+    content: url("../img/football/captain-band.png");
+}
+
+.sign-up-button {
+    background: #ff0000;
+}

@@ -1,0 +1,191 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "SF Pro Display", sans-serif;
+    color: #fff;
+    background: #063c4a;
+}
+
+.container {
+    max-width: 1200px;
+    padding: 20px 0 20px 0;
+    margin-right: auto;
+    margin-left: auto;
+    background: url("../img/find.png") no-repeat bottom right;
+}
+
+.timetable {
+    padding: 0;
+    margin-top: 50px;
+}
+
+.timetable > li {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    list-style-type: none;
+    color: #FFFFFF;
+    height: 100%;
+    width: 100%;
+    max-width: 400px;
+    padding: 0.8rem;
+    margin: 1px;
+}
+
+.timetable li abbr {
+    font-size: 0;
+}
+
+.timetable li abbr:after {
+    font-size: 4rem;
+}
+
+.timetable > li:before {
+    font-size: 1rem;
+}
+
+.timetable .day-title {
+    border: none;
+    align-items: center;
+    width: 100%;
+}
+
+.class-title {
+    font-style: italic;
+    font-size: 1rem;
+    text-transform: uppercase;
+}
+
+.class-time {
+    font-size: 1.1rem;
+}
+
+.class-teacher {
+    font-size: 1rem;
+}
+
+.football, .basketball, .volleyball, .boxing, .swimming, .judo {
+    transition: all 0.35s ease;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.timetable .football:hover, .basketball:hover, .volleyball:hover, .boxing:hover, .swimming:hover, .judo:hover {
+    transition: all .2s ease-out;
+    -webkit-transform: scale(0.96);
+    transform: scale(0.96);
+    cursor: pointer;
+    font-smoothing: antialiased;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.timetable .purple {
+    background: #bd70bdff;
+}
+
+.timetable .orange {
+    background: #f58c1e;
+}
+
+.timetable .green {
+    background: #57bf33;
+}
+
+.timetable .blue {
+    background: #35e1e0;
+}
+
+.timetable .red {
+    background: #ff0000;
+}
+
+.timetable .red:hover {
+    color: #ffffff;
+}
+
+.timetable .yellow {
+    background: #e1e02b;
+}
+
+@media only screen and (min-width: 1200px) {
+    .timetable {
+        display: grid;
+        grid-template-columns: repeat(7, minmax(150px, 180px));
+        grid-template-rows: repeat(6, 1fr);
+        grid-auto-rows: auto;
+        grid-gap: 6px;
+        grid-auto-flow: column;
+    }
+
+    .day-title {
+        grid-row-end: 2;
+    }
+
+    .timetable > li {
+        line-height: 1.15rem;
+    }
+
+    .timetable > li abbr {
+        font-size: 3rem;
+    }
+
+    .timetable > li abbr:after {
+        content: attr(title);
+        font-size: 0;
+    }
+}
+
+@media screen and (max-width: 955px) {
+    .container {
+        background-image: none;
+    }
+}
+
+@media only screen and (min-width: 480px) and (max-width: 1199px) {
+    .timetable {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 2fr));
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+
+    .timetable .day-title {
+        border: none;
+        align-items: center;
+        grid-column-start: 1;
+        grid-column-end: -1;
+    }
+
+    .timetable > li abbr {
+        font-size: 0;
+    }
+
+    .timetable > li abbr:after {
+        content: attr(title);
+        font-size: 4rem;
+    }
+
+    .timetable > li:before {
+        font-size: 1rem;
+    }
+
+    .timetable > div {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .timetable > li abbr:after {
+        content: attr(title);
+        font-size: 2rem;
+    }
+}

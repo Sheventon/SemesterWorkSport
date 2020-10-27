@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Recording</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/recording.css">
+    <link rel="stylesheet" href="../css/header.css">
+</head>
+<body>
+
+<script type="text/javascript" src="../js/form_validator.js"></script>
+
+<div class="container-shadow"></div>
+<div class="container">
+    <div class="wrap">
+        <div class="headings">
+            <a id="recording" class="active"><span>Запись</span></a>
+        </div>
+        <div id="sign-in-form">
+            <form action="/recording" method="post">
+                <label for="username">Имя</label>
+                <input id="username" type="text" name="username"/>
+
+                <label for="surname">Фамилия</label>
+                <input id="surname" type="text" name="surname" />
+
+                <label for="email">Электронная почта</label>
+                <input id="email" type="email" name="email"/>
+
+                <label for="section">Секция:</label>
+                <select name="section" class="section" id="section">
+                    <option class="option" value="football">Мини-футбол</option>
+                    <option class="option" value="basketball">Баскетбол</option>
+                    <option class="option" value="volleyball">Волейбол</option>
+                    <option class="option" value="boxing">Бокс</option>
+                    <option class="option" value="swimming">Плавание</option>
+                    <option class="option" value="judo">Дзюдо</option>
+                </select>
+
+                <input type="submit" class="button" name="submit" value="Записаться"/>
+            </form>
+
+            <footer>
+                <div class="hr"></div>
+                <div class="fp">Мы будем ждать Вас!</div>
+            </footer>
+        </div>
+    </div>
+</div>
+
+<!--<div class="container-shadow"></div>
+<div class="container">
+    <div class="wrap">
+        <div class="headings">
+            <a id="sign-in" href="#" class="active"><span>Log In</span></a>
+        </div>
+        <div id="sign-in-form">
+            <form>
+                <label for="username">Username</label>
+                <input id="username" type="text" name="username"/>
+                <label for="password-1">Password</label>
+                <input id="password-1" type="password" name="password"/>
+                <input id="remember" type="checkbox"/>
+                <label for="remember" id="rlabel">Keep me Signed in</label>
+                <input type="submit" class="button" name="submit" value="Sign in"/>
+            </form>
+
+            <footer>
+                <div class="hr"></div>
+                <div class="fp"><a href="">Forgot Password?</a></div>
+            </footer>
+        </div>
+    </div>
+</div>-->
+</body>
+</html>

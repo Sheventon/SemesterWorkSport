@@ -1,0 +1,294 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: 'SF Pro Display', sans-serif;
+}
+
+.main {
+    padding-top: 67px;
+}
+
+.section-1 {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    height: 85vh;
+}
+
+.subsection-1 {
+    background: rgba(0, 0, 0, 0.6);
+    height: 85vh;
+}
+
+.main-title {
+    text-align: left;
+    padding-top: 50vh;
+    color: #ffffff;
+}
+
+.main-title h2 {
+    font-size: 45px;
+}
+
+.main-title h3 {
+    font-size: 40px;
+    text-transform: uppercase;
+    font-weight: 5000;
+}
+
+.section-2 {
+    display: grid;
+    grid-template-columns: 40% 60%;
+    padding: 2% 10%;
+}
+
+.icon, .our-plus-text {
+    margin: 0 auto;
+    width: 70px;
+    height: 70px;
+}
+
+.main-icon {
+    content: url("../img/icon2.png");
+    height: 210px;
+    width: 210px;
+    margin: auto auto;
+}
+
+.main-description {
+    font-size: 20px;
+}
+
+.section-3 {
+    background: #f7f7f7;
+    padding-top: 1%;
+    margin-bottom: 5%;
+}
+
+.our-plus-blocks {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 50% 50%;
+    margin: 3% 5%;
+}
+
+.our-plus-block:hover {
+    animation-name: zoom;
+    animation-duration: 0.5s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+.plus-title, .sign-up {
+    text-align: center;
+    font-size: 30px;
+}
+
+.title, .main-description h3 {
+    text-align: center;
+    font-size: 40px;
+}
+
+.our-plus-text {
+    text-align: center;
+    width: 60%;
+    padding-top: 3%;
+    padding-bottom: 6%;
+}
+
+.our-plus-text:hover {
+    /*animation-name: zoom;
+    animation-duration: 0.5s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;*/
+}
+
+.sign-up {
+    padding-bottom: 5%;
+}
+
+.sign-up-button {
+    color: #ffffff;
+    padding: 0.5% 1%;
+    font-size: 30px;
+    display: inline-block;
+    text-decoration: none;
+    font-weight: normal;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    user-select: none;
+    line-height: 1.25;
+    border-radius: 0.25rem;
+}
+
+.sign-up-button:hover {
+    color: #ffffff;
+    animation-name: zoom;
+    animation-duration: 0.5s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+@keyframes zoom {
+    0% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(1.05)
+    }
+}
+
+
+@media screen and (max-width: 1000px) {
+    .section-2 {
+        display: inline-block;
+        padding-right: 5%;
+        padding-left: 5%;
+    }
+
+    .main-icon {
+        margin-bottom: 30px;
+    }
+
+    .main-description {
+        margin-bottom: 30px;
+    }
+}
+
+@media screen and (max-width: 920px) {
+    .our-plus-text {
+        margin-bottom: 100px;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .main-title h2 {
+        font-size: 35px;
+    }
+
+    .main-title h3 {
+        font-size: 30px;
+    }
+
+    .main-description {
+        font-size: 17px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .our-plus-blocks {
+        display: inline-block;
+    }
+
+    .our-plus-text {
+        margin-bottom: 50px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .sign-up-button {
+        font-size: 15px;
+    }
+
+    .main-title {
+        padding-top: 65vh;
+    }
+
+    /*.main-title h2 {
+        font-size: 25px;
+    }
+
+    .main-title h3 {
+        font-size: 20px;
+    }*/
+    .our-plus-block {
+        margin-bottom: 80px;
+    }
+
+    .main-title h2 {
+        font-size: 20px;
+    }
+
+    .main-title h3 {
+        font-size: 15px;
+    }
+
+    .main-icon {
+        width: 150px;
+        height: 150px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .main-description {
+        font-size: 14px;
+    }
+
+    .title {
+        font-size: 25px;
+    }
+
+    .plus-title {
+        font-size: 20px;
+    }
+
+    .sign-up-button {
+        font-size: 12px;
+    }
+
+    .our-plus-text {
+        font-size: 12px;
+        margin-bottom: 50px;
+    }
+
+    .main-icon {
+        width: 100px;
+        height: 100px;
+    }
+
+    .our-plus-text {
+        font-size: 12px;
+        margin-bottom: 100px;
+    }
+}
+
+@media screen and (max-width: 180px) {
+    .sign-up-button {
+        font-size: 10px;
+    }
+
+    .main-title h2 {
+        font-size: 17px;
+    }
+
+    .main-title h3 {
+        font-size: 12px;
+    }
+
+    .main-description {
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-height: 400px) {
+    .main-title {
+        padding-top: 45vh;
+    }
+
+    .main-title h2 {
+        font-size: 20px;
+    }
+
+    .main-title h3 {
+        font-size: 15px;
+    }
+}
+
+@media screen and (max-height: 250px) {
+    .main-title {
+        padding-top: 30vh;
+    }
+}
