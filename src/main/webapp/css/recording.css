@@ -1,0 +1,231 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+* {
+    transition: 0.1s ease;
+}
+
+body {
+    background: url("../img/recording.jpg");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    font-family: "SF Pro Display", sans-serif;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+.container {
+    width: 525px;
+    height: calc(100vh - 160px);
+    left: 50%;
+    padding: 80px 0;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.4) 0%, #3b4249 100%);
+    box-shadow: 0 0 50px -20px #000;
+    z-index: 1;
+    min-width: 230px;
+}
+
+.wrap {
+    position: relative;
+    width: 400px;
+    margin: 0 auto;
+}
+
+.headings {
+    position: relative;
+    margin: 30px auto 20px;
+}
+
+.headings > a {
+    color: rgba(255, 255, 255, 0.7);
+    padding-bottom: 10px;
+    border-bottom: solid 2px rgba(17, 97, 237, 0);
+    display: inline-block;
+}
+
+.headings > a:first-child {
+    margin-left: 20px;
+    margin-right: 45px;
+}
+
+.headings > a:hover {
+    color: rgba(255, 255, 255, 1);
+}
+
+.headings > a.active {
+    color: rgba(255, 255, 255, 1);
+    border-bottom: solid 4px #aaf0d1;
+    box-shadow: 0 1px 1px -1px #1d2124;
+}
+
+.headings > a span {
+    font-size: 1.4rem;
+    letter-spacing: 1px;
+}
+
+label {
+    color: rgba(255, 255, 255, 0.8);
+    text-transform: uppercase;
+    padding: 3px 20px;
+    position: relative;
+    display: block;
+    font-size: 16px;
+}
+
+input {
+    width: 100%;
+    color: #fff;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 1px;
+    background: transparent;
+    padding: 10px 20px;
+    border: none;
+    border-bottom: 2px solid #1d2124;
+    outline: none;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+
+input:active,
+input:focus {
+    border-bottom: 0.12em solid #aaf0d1;
+    border-color: #aaf0d1;
+    box-shadow: 0 5px 5px -5px #aaf0d1;
+}
+
+#email + i {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 25px;
+    float: right;
+    position: relative;
+    top: -43px;
+    right: 15px;
+    cursor: pointer;
+}
+
+#email + i:hover {
+    color: rgba(255, 255, 255, 1);
+}
+
+/*input[type="checkbox"] {
+    width: inherit;
+    padding: 0;
+    margin: 20px 5px 30px 20px;
+}
+
+input[type="checkbox"] + span {
+    color: #fff;
+}*/
+
+.section {
+    width: 180px;
+    background: #aaf0d1;
+    color: #2c353e;
+    text-transform: uppercase;
+    margin-top: 1.3em;
+    padding: 8px;
+    cursor: pointer;
+    border: 2px solid transparent;
+}
+
+/*#rlabel {
+    display: inline-block;
+    padding: 0;
+    top: 1px;
+}
+
+#remember:hover,
+#rlabel:hover {
+    cursor: pointer;
+}*/
+
+.button {
+    width: 100%;
+    background: #aaf0d1;
+    color: #2c353e;
+    text-transform: uppercase;
+    margin-top: 1.3em;
+    padding: 12px;
+    cursor: pointer;
+    border: 2px solid transparent;
+}
+
+.button:hover {
+    background: #aaf0d1;
+    box-shadow: 0 0 2px #aaf0d1, 0 0 5px #aaf0d1, 0 0 10px #aaf0d1;
+}
+
+#sign-up-form input[type="submit"] {
+    margin-top: 50px;
+}
+
+footer .fp a {
+    color: rgba(255, 255, 255, 0.6);
+    cursor: pointer;
+}
+
+footer .hr {
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+    margin: 30px 0 20px;
+}
+
+footer .fp {
+    font-size: 20px;
+    text-align: center;
+    color: #ffffff;
+}
+
+footer .fp a:hover {
+    color: rgba(255, 255, 255, 1);
+}
+
+#sign-in-form {
+    display: block;
+}
+
+#sign-up-form {
+    display: none;
+}
+
+@media screen and (max-width: 524px) {
+    .container {
+        width: 100%;
+        left: 50%;
+    }
+
+    .wrap {
+        width: 300px;
+    }
+}
+
+@media screen and (max-width: 399px) {
+    .container {
+        width: 100%;
+        margin: 0;
+        left: inherit;
+    }
+
+    .wrap {
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 330px) {
+    .container {
+        width: 100%;
+        left: inherit;
+    }
+}
+
+@media screen and (max-height: 650px) {
+    .container {
+        padding: 50px 0;
+    }
+}

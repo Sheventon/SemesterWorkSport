@@ -1,0 +1,53 @@
+.section-1 {
+    background-image: url("../img/boxing/boxing_section.jpg");
+}
+
+.section-2 {
+    display: flex;
+    padding: 3% 20%;
+}
+
+.main-description h3 {
+    font-size: 25px;
+}
+
+.our-plus-block {
+    margin-bottom: 3%;
+}
+
+.plus-icon-1 {
+    content: url("../img/boxing/winner.png");
+}
+
+.plus-icon-2 {
+    content: url("../img/boxing/talk.png");
+}
+
+.plus-icon-3 {
+    content: url("../img/boxing/win.png");
+}
+
+.plus-icon-4 {
+    content: url("../img/boxing/punch.png");
+}
+
+.sign-up-button {
+    background: #ff6c60;
+}
+
+@media screen and (max-width: 280px) {
+    .main-description h3 {
+        font-size: 20px;
+    }
+}
+
+@media screen  and (max-width: 440px) {
+    .our-plus-text {
+        font-size: 12px;
+        margin-bottom: 50px;
+    }
+
+    .plus-title {
+        font-size: 20px;
+    }
+}

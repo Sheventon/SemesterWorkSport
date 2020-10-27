@@ -1,0 +1,23 @@
+.section-1 {
+    background-image: url("../img/basketball/basketball_section.jpg");
+}
+
+.plus-icon-1 {
+    content: url("../img/basketball/basketball-ball.png");
+}
+
+.plus-icon-2 {
+    content: url("../img/basketball/fireball.png");
+}
+
+.plus-icon-3 {
+    content: url("../img/basketball/basketball-players.png");
+}
+
+.plus-icon-4 {
+    content: url("../img/basketball/shot.png");
+}
+
+.sign-up-button {
+    background: #6894cf;
+}

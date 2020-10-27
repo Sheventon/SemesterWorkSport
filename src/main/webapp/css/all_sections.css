@@ -1,0 +1,18 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: 'SF Pro Display', sans-serif;
+}
+
+.main {
+    padding-top: 67px;
+}
+
+.section {
+    margin-top: 170px;
+}
+
+.section-description {
+    margin-left: 10%;
+    margin-right: 10%;
+}

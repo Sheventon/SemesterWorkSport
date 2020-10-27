@@ -1,0 +1,23 @@
+.section-1 {
+    background-image: url("../img/volleyball/volleyball_section.jpg");
+}
+
+.plus-icon-1 {
+    content: url("../img/volleyball/volleyball_ball.png");
+}
+
+.plus-icon-2 {
+    content: url("../img/volleyball/volleyball_shot.png");
+}
+
+.plus-icon-3 {
+    content: url("../img/volleyball/volleyball-team.png");
+}
+
+.plus-icon-4 {
+    content: url("../img/volleyball/medal.png");
+}
+
+.sign-up-button {
+    background: #ffd700;
+}
