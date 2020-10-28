@@ -125,7 +125,7 @@ input[type="checkbox"] + span {
 }*/
 
 .section {
-    width: 180px;
+    width: 100%;
     background: #aaf0d1;
     color: #2c353e;
     text-transform: uppercase;
@@ -192,6 +192,13 @@ footer .fp a:hover {
 
 #sign-up-form {
     display: none;
+}
+
+#name-message, #surname-message, #email-message {
+    display: block;
+    color: #ff0000;
+    font-size: 15px;
+    text-align: center;
 }
 
 @media screen and (max-width: 524px) {

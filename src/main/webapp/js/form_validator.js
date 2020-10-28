@@ -62,12 +62,27 @@ function surname_validator() {
     }
 }
 
+/*function select_validator() {
+    var form = document.getElementById("form");
+    var select = document.getElementById("section");
+    var value = select.options[select.selectedIndex].value;
+    var select_message = document.getElementById("select-message");
+    if (value == null) {
+        select_message.classList.add("visible");
+        select_message.innerHTML = "Пожалуйста, выберите секцию";
+        return false;
+    } else {
+        select_message.classList.remove("visible");
+        select_message.innerHTML = "";
+        return true;
+    }
+}*/
 
 
 function submit_validator() {
     var form = document.getElementById("form");
     var password = document.getElementById("password").value;
-    if (email_validator() && name_validator() && password.length > 0) {
+    if (email_validator() && surname_validator() && name_validator() && password.length > 0) {
         form.submit();
     } else if (email_validator() == null || name_validator() == null || surname_validator() == null || password.length === 0) {
         alert("Пожалуйста, заполните все поля");
@@ -79,9 +94,22 @@ function submit_validator() {
 function login_validator() {
     var form = document.getElementById("form");
     var password = document.getElementById("password").value;
-    if (email_validator()) {
+    if (email_validator() && password.length > 0) {
         form.submit();
-    } else if (email_validator() == null && password === "") {
+    } else if (email_validator() == null || password === "") {
+        alert("Пожалуйста, заполните все поля");
+    } else {
+
+    }
+}
+
+function recording_validator() {
+    var form = document.getElementById("recording-form");
+    //var select = document.getElementById("section").value;
+    if (name_validator() && surname_validator() && email_validator()) {
+        alert("GOOD JOB");
+        form.submit();
+    } else if (name_validator() == null || surname_validator() == null || email_validator() == null) {
         alert("Пожалуйста, заполните все поля");
     } else {
 
