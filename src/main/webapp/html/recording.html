@@ -18,15 +18,18 @@
             <a id="recording" class="active"><span>Запись</span></a>
         </div>
         <div id="sign-in-form">
-            <form action="/recording" method="post">
-                <label for="username">Имя</label>
-                <input id="username" type="text" name="username"/>
+            <form id="recording-form" action="/recording" method="post">
+                <label for="name">Имя</label>
+                <input id="name" type="text" name="name" onblur="name_validator()" onmouseover="name_validator()" required=""/>
+                <span id="name-message"></span>
 
                 <label for="surname">Фамилия</label>
-                <input id="surname" type="text" name="surname" />
+                <input id="surname" type="text" name="surname" onblur="surname_validator()" onmouseover="surname_validator()" required=""/>
+                <span id="surname-message"></span>
 
                 <label for="email">Электронная почта</label>
-                <input id="email" type="email" name="email"/>
+                <input id="email" type="email" name="email" onblur="email_validator()" onmouseover="email_validator()" required=""/>
+                <span id="email-message"></span>
 
                 <label for="section">Секция:</label>
                 <select name="section" class="section" id="section">
@@ -38,7 +41,7 @@
                     <option class="option" value="judo">Дзюдо</option>
                 </select>
 
-                <input type="submit" class="button" name="submit" value="Записаться"/>
+                <input type="submit" class="button" name="submit" value="Записаться" onclick="recording_validator()"/>
             </form>
 
             <footer>
