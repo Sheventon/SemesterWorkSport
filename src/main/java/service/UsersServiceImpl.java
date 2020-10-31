@@ -7,7 +7,7 @@ import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
-import java.util.List;
+import java.util.Optional;
 
 /**
  * created: 14-10-2020 - 23:10
@@ -16,9 +16,9 @@ import java.util.List;
  * @author dinar
  * @version v0.1
  */
-public class UsersServiceImpl implements UsersService {
+public class UsersServiceImpl implements UsersService<Long> {
 
-    private UsersRepository usersRepository;
+    private final UsersRepository usersRepository;
 
     private static final String SALT = "1234567890-=+()[]{};',./<>?!:";
 
@@ -27,33 +27,24 @@ public class UsersServiceImpl implements UsersService {
     }
 
     @Override
-    public User getByEmail(String email) {
-        return usersRepository.findByEmail(email);
+    public Long signUp(String name, String lastName, String email, String password) {
+        User user = new User(name, lastName, email, generateSecurePassword(password));
+        return usersRepository.saveWithReturnId(user);
     }
 
     @Override
-    public List<User> getAll() {
-        return usersRepository.findAll();
-    }
+    public Long signIn(String email, String password) {
+        Optional<User> user = usersRepository.findByEmail(email);
 
-    @Override
-    public void addUser(User user) {
-        usersRepository.save(user);
-    }
-
-    @Override
-    public User getUser(Long id) {
-        return usersRepository.findById(id);
-    }
-
-    @Override
-    public boolean deleteUser(String id) {
-        return false;
+        if (user.isPresent() && user.get().getPassword().equals(generateSecurePassword(password))) {
+            return user.get().getId();
+        }
+        return null;
     }
 
     @Override
     public boolean userIsExist(String email) {
-        return getByEmail(email) != null;
+        return usersRepository.findByEmail(email).isPresent();
     }
 
     @Override
@@ -67,6 +58,11 @@ public class UsersServiceImpl implements UsersService {
         } catch (NoSuchAlgorithmException e) {
             throw new IllegalStateException(e);
         }
+    }
+
+    @Override
+    public Optional<User> getById(Long id) {
+        return usersRepository.findById(id);
     }
 }
 

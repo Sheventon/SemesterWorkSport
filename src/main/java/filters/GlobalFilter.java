@@ -1,6 +1,7 @@
 package filters;
 
-import service.AuthenticationService;
+import service.CookieService;
+import service.webapputils.CookieUtils;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
@@ -13,12 +14,12 @@ import java.io.IOException;
 @WebFilter(urlPatterns = {"/*"})
 public class GlobalFilter implements Filter {
 
-    private AuthenticationService authenticationService;
+    private CookieService<Long> cookieService;
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
         ServletContext servletContext = filterConfig.getServletContext();
-        authenticationService = (AuthenticationService) servletContext.getAttribute("authenticationService");
+        cookieService = (CookieService<Long>) servletContext.getAttribute("cookieService");
     }
 
     @Override
@@ -27,28 +28,18 @@ public class GlobalFilter implements Filter {
         request.setCharacterEncoding("UTF-8");
 
         HttpServletRequest httpServletRequest = (HttpServletRequest) request;
-        HttpServletResponse httpServletResponse = (HttpServletResponse) response;
         HttpSession httpSession = httpServletRequest.getSession();
 
         if (httpSession.getAttribute("user_id") == null) {
 
-            Cookie[] cookies = httpServletRequest.getCookies();
             String sessionId = null;
-
-            if (cookies != null) {
-                for (Cookie cookie : cookies) {
-                    if (cookie.getName().equals("session_id")) {
-                        sessionId = cookie.getValue();
-                        break;
-                    }
-                }
+            Cookie cookie = CookieUtils.getCookie(httpServletRequest.getCookies(),"session_id");
+            if (cookie != null) {
+                sessionId = cookie.getValue();
             }
+
             if (sessionId != null) {
-                Long userId = authenticationService.getUserBySession(
-                        httpServletRequest,
-                        httpServletResponse,
-                        sessionId);
-                httpSession.setAttribute("user_id", userId);
+                httpSession.setAttribute("user_id", cookieService.getUserId(sessionId));
             }
         }
         chain.doFilter(request, response);

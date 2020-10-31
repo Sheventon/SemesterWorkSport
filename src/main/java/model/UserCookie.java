@@ -9,14 +9,14 @@ import lombok.*;
  * @author dinar
  * @version v0.1
  */
-@Getter
-@Setter
+
+@Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@EqualsAndHashCode
-@ToString
 public class UserCookie {
+
     private Long userId;
     private String sessionId;
+
 }

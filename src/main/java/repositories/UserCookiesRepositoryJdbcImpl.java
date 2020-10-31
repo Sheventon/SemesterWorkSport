@@ -4,6 +4,7 @@ import model.UserCookie;
 
 import javax.sql.DataSource;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * created: 15-10-2020 - 18:57
@@ -26,13 +27,10 @@ public class UserCookiesRepositoryJdbcImpl implements UserCookiesRepository {
             .sessionId(row.getString("session_id"))
             .build();
 
-    DataSource dataSource;
+    private final SimpleJdbcTemplate template;
 
-    SimpleJdbcTemplate template;
-
-    public UserCookiesRepositoryJdbcImpl(DataSource dataSource) {
-        this.dataSource = dataSource;
-        this.template = new SimpleJdbcTemplate(dataSource);
+    public UserCookiesRepositoryJdbcImpl(SimpleJdbcTemplate simpleJdbcTemplate) {
+        this.template = simpleJdbcTemplate;
     }
 
     @Override
@@ -53,10 +51,8 @@ public class UserCookiesRepositoryJdbcImpl implements UserCookiesRepository {
     }
 
     @Override
-    public UserCookie findById(Long userId) {
-        List<UserCookie> resultList = template.selectQuery(SELECT_USER_COOKIE_BY_USER_ID, userCookieRowMapper, userId);
-        return resultList.isEmpty() ? null : resultList.get(0);
-
+    public Optional<UserCookie> findById(Long userId) {
+        return template.selectQuery(SELECT_USER_COOKIE_BY_USER_ID, userCookieRowMapper, userId).stream().findFirst();
     }
 
     @Override
@@ -65,9 +61,15 @@ public class UserCookiesRepositoryJdbcImpl implements UserCookiesRepository {
     }
 
     @Override
-    public UserCookie findBySessionId(String sessionId) {
-        List<UserCookie> resultList = template.selectQuery(SELECT_USER_COOKIE_BY_SESSION_ID, userCookieRowMapper, sessionId);
-        return resultList.isEmpty() ? null : resultList.get(0);
+    public Optional<UserCookie> findBySessionId(String sessionId) {
+        return template.selectQuery(SELECT_USER_COOKIE_BY_SESSION_ID, userCookieRowMapper, sessionId).stream().findFirst();
+    }
+
+    @Override
+    public Long saveWithReturnId(UserCookie userCookie) {
+        return template.updateQuery(INSERT_USER_COOKIE,
+                userCookie.getUserId(),
+                userCookie.getSessionId());
     }
 
 }

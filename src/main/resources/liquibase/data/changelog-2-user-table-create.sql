@@ -1,13 +1,13 @@
---liquibase formatted sql
+-- liquibase formatted sql
 
---changeset DinarShagaliev:2
+-- changeset DinarShagaliev:2
 create table user(
     id bigint unsigned primary key auto_increment ,
-    name varchar(32),
-    surname varchar(32),
+    name varchar(32) not null,
+    surname varchar(32) not null,
     patronymic varchar(32),
-    email varchar(60),
-    password char(88)
+    email varchar(60) not null,
+    password char(88) not null
 );
 
---rollback drop table user
+-- rollback drop table user

@@ -10,10 +10,11 @@ import java.io.PrintWriter;
  * @version v0.1
  */
 public class AlertUtils {
-    public static void show(PrintWriter pw, String value, String location) {
+    public static void show(PrintWriter pw, String message, String location) {
         pw.println("<script type=\"text/javascript\">");
-        pw.println("alert('" + value + "');");
+        pw.println("alert('" + message + "');");
         pw.println("location='" + location + "';");
         pw.println("</script>");
     }
 }
+

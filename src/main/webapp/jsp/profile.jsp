@@ -1,4 +1,7 @@
-<%@ page import="model.User" %><%--
+<%@ page import="model.User" %>
+<%@ page import="javax.enterprise.context.RequestScoped" %>
+<%@ page import="model.Record" %>
+<%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: dinar
   Date: 16.10.2020
@@ -22,10 +25,12 @@
 
 </head>
 <%
-    String name = String.valueOf(request.getAttribute("name"));
-    String surname = String.valueOf(request.getAttribute("surname"));
-    String patronymic = String.valueOf(request.getAttribute("patronymic"));
-    String email = String.valueOf(request.getAttribute("email"));
+    List<String> userSections = (List<String>) request.getAttribute("sections");
+
+//    String name = String.valueOf(request.getAttribute("name"));
+//    String surname = String.valueOf(request.getAttribute("surname"));
+//    String patronymic = String.valueOf(request.getAttribute("patronymic"));
+//    String email = String.valueOf(request.getAttribute("email"));
 %>
 <body>
 <header>
@@ -37,12 +42,12 @@
         </label>
         <ul class="menu__box">
             <li><a class="menu__item" href="/home"><span class="red">Домой</span></a></li>
-            <li><a class="menu__item" href="#">Секции</a></li>
-            <li><a class="menu__item" href="#">Расписание</a></li>
+            <li><a class="menu__item" href="/sections">Секции</a></li>
+            <li><a class="menu__item" href="/timetable">Расписание</a></li>
             <li><a class="menu__item" href="#">Тренеры</a></li>
             <li><a class="menu__item" href="#">Достижения</a></li>
             <li><a class="menu__item" href="mailto:tores.fernando.real@gmail.com">Написать на почту</a></li>
-            <li><a class="menu__item" href="/sign_out"><span class="red">Выйти</span></a></li>
+            <li><a class="menu__item" href="/out"><span class="red">Выйти</span></a></li>
         </ul>
     </nav>
 </header>
@@ -52,16 +57,23 @@
     <div class="content">
         <div class="section-1">
             <div class="profile-image"></div>
-            <h3><%=name%> <%=surname%> <%=patronymic%></h3>
-            <p class="email"><%=email%></p>
+            <h3>${requestScope.name} ${requestScope.surname} ${requestScope.patronymic}</h3>
+            <p class="email">${requestScope.email}</p>
             <div class="sections">
                 <h4>Секции</h4>
-                <p>Мини-футбол</p>
-                <p>Баскетбол</p>
-                <p>Бокс</p>
-                <p>Плавание</p>
-                <p>Дзюдо</p>
-                <p>Волейбол</p>
+<%--                <p>Мини-футбол</p>--%>
+<%--                <p>Баскетбол</p>--%>
+<%--                <p>Бокс</p>--%>
+<%--                <p>Плавание</p>--%>
+<%--                <p>Дзюдо</p>--%>
+<%--                <p>Волейбол</p>--%>
+                <%
+                    for (String section : userSections) {
+                %>
+                    <p><%=section%></p>
+                <%
+                    }
+                %>
             </div>
         </div>
 

@@ -2,8 +2,8 @@ package repositories;
 
 import model.User;
 
-import javax.sql.DataSource;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * created: 14-10-2020 - 22:13
@@ -23,8 +23,6 @@ public class UsersRepositoryJdbcImpl implements UsersRepository {
     // language=SQL
     private static final String SELECT_USER_BY_ID = "select * from user where id = ?";
 
-    private DataSource dataSource;
-
     private final SimpleJdbcTemplate template;
 
     private final RowMapper<User> userRowMapper = row -> User.builder()
@@ -36,9 +34,8 @@ public class UsersRepositoryJdbcImpl implements UsersRepository {
             .password(row.getString("password"))
             .build();
 
-    public UsersRepositoryJdbcImpl(DataSource dataSource) {
-        this.dataSource = dataSource;
-        this.template = new SimpleJdbcTemplate(dataSource);
+    public UsersRepositoryJdbcImpl(SimpleJdbcTemplate simpleJdbcTemplate) {
+        this.template = simpleJdbcTemplate;
     }
 
     @Override
@@ -62,9 +59,8 @@ public class UsersRepositoryJdbcImpl implements UsersRepository {
     }
 
     @Override
-    public User findById(Long id) {
-        List<User> userList = template.selectQuery(SELECT_USER_BY_ID, userRowMapper, id);
-        return userList.isEmpty() ? null : userList.get(0);
+    public Optional<User> findById(Long id) {
+        return template.selectQuery(SELECT_USER_BY_ID, userRowMapper, id).stream().findFirst();
     }
 
     @Override
@@ -73,8 +69,17 @@ public class UsersRepositoryJdbcImpl implements UsersRepository {
     }
 
     @Override
-    public User findByEmail(String email) {
-        List<User> userList = template.selectQuery(SELECT_USER_BY_EMAIL, userRowMapper, email);
-        return userList.isEmpty() ? null : userList.get(0);
+    public Optional<User> findByEmail(String email) {
+        return template.selectQuery(SELECT_USER_BY_EMAIL, userRowMapper, email).stream().findFirst();
+    }
+
+    @Override
+    public Long saveWithReturnId(User user) {
+        return template.updateQuery(INSERT_USER,
+                user.getName(),
+                user.getSurname(),
+                user.getPatronymic(),
+                user.getEmail(),
+                user.getPassword());
     }
 }

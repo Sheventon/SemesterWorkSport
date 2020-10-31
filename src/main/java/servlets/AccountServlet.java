@@ -2,6 +2,8 @@ package servlets;
 
 import model.User;
 import service.AuthenticationService;
+import service.CookieService;
+import service.RecordsService;
 import service.UsersService;
 
 import javax.servlet.ServletConfig;
@@ -13,6 +15,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.List;
+import java.util.Optional;
 
 /**
  * created: 16-10-2020 - 17:40
@@ -24,29 +28,32 @@ import java.io.IOException;
 @WebServlet("/account")
 public class AccountServlet extends HttpServlet {
 
-    UsersService usersService;
-    AuthenticationService authenticationService;
-
+    private UsersService<Long> usersService;
+    private RecordsService<Long> recordsService;
     @Override
     public void init(ServletConfig config) throws ServletException {
         ServletContext servletContext = config.getServletContext();
-        usersService = (UsersService) servletContext.getAttribute("userService");
-        authenticationService = (AuthenticationService) servletContext.getAttribute("authenticationService");
+        usersService = (UsersService<Long>) servletContext.getAttribute("usersService");
+        recordsService = (RecordsService<Long>) servletContext.getAttribute("recordsService");
+
     }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("profile - doGet");
 
         HttpSession session = request.getSession();
         Long userId = (Long) session.getAttribute("user_id");
 
-        User user = usersService.getUser(userId);
+        Optional<User> user = usersService.getById(userId);
+        List<String> sections = recordsService.getAllSections(userId);
 
-        request.setAttribute("name", user.getName());
-        request.setAttribute("surname", user.getSurname());
-        request.setAttribute("patronymic", user.getPatronymic() == null ? "" : user.getPatronymic());
-        request.setAttribute("email", user.getEmail());
+        user.ifPresent(usr -> {
+            request.setAttribute("name", usr.getName());
+            request.setAttribute("surname", usr.getSurname());
+            request.setAttribute("patronymic", usr.getPatronymic() == null ? "" : usr.getPatronymic());
+            request.setAttribute("email", usr.getEmail());
+            request.setAttribute("sections", sections);
+        });
 
         request.getServletContext().getRequestDispatcher("/jsp/profile.jsp").forward(request, response);
     }
