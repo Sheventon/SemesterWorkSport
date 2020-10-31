@@ -12,13 +12,12 @@ import java.io.IOException;
  * @author dinar
  * @version v0.1
  */
-@WebServlet("/sign_out")
+@WebServlet("/out")
 public class SignOutServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
-        System.out.println("sign out");
 
         Cookie cookie = new Cookie("session_id", "deleted");
         cookie.setMaxAge(0);

@@ -2,14 +2,8 @@ package listeners;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
-import repositories.UserCookiesRepository;
-import repositories.UserCookiesRepositoryJdbcImpl;
-import repositories.UsersRepository;
-import repositories.UsersRepositoryJdbcImpl;
-import service.AuthenticationService;
-import service.AuthenticationServiceImpl;
-import service.UsersService;
-import service.UsersServiceImpl;
+import repositories.*;
+import service.*;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
@@ -46,7 +40,9 @@ public class CustomServletContextListener implements ServletContextListener {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
+
         HikariConfig hikari = new HikariConfig();
+
         hikari.setJdbcUrl(properties.getProperty("db.jdbc.url"));
         hikari.setDriverClassName(properties.getProperty("db.jdbc.driver.classname"));
         hikari.setUsername(properties.getProperty("db.jdbc.username"));
@@ -55,14 +51,22 @@ public class CustomServletContextListener implements ServletContextListener {
 
         HikariDataSource dataSource = new HikariDataSource(hikari);
 
-        UsersRepository usersRepository = new UsersRepositoryJdbcImpl(dataSource);
-        UsersService userService = new UsersServiceImpl(usersRepository);
-        UserCookiesRepository userCookiesRepository = new UserCookiesRepositoryJdbcImpl(dataSource);
-        AuthenticationService authenticationService = new AuthenticationServiceImpl(usersRepository, userCookiesRepository);
+        SimpleJdbcTemplate simpleJdbcTemplate = new SimpleJdbcTemplate(dataSource);
 
-        servletContext.setAttribute("dataSource", dataSource);
-        servletContext.setAttribute("userService", userService);
-        servletContext.setAttribute("authenticationService", authenticationService);
+        UsersRepository usersRepository = new UsersRepositoryJdbcImpl(simpleJdbcTemplate);
+        UserCookiesRepository userCookiesRepository = new UserCookiesRepositoryJdbcImpl(simpleJdbcTemplate);
+
+        UsersService<Long> userService = new UsersServiceImpl(usersRepository);
+        CookieService<Long> cookieService = new CookieServiceImpl(userCookiesRepository);
+
+        RecordsRepository recordsRepository = new RecordsRepositoryJdbcImpl(simpleJdbcTemplate, dataSource);
+        SectionsRepository sectionsRepository = new SectionsRepositoryJdbcImpl(simpleJdbcTemplate);
+
+        RecordsService<Long> recordsService = new RecordsServiceImpl(recordsRepository, sectionsRepository);
+
+        servletContext.setAttribute("usersService", userService);
+        servletContext.setAttribute("cookieService", cookieService);
+        servletContext.setAttribute("recordsService", recordsService);
 
     }
 

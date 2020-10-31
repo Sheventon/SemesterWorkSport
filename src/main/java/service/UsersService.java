@@ -2,29 +2,24 @@ package service;
 
 import model.User;
 
-import java.util.List;
+import java.util.Optional;
 
 /**
  * created: 14-10-2020 - 23:08
- * project: SemestrWorkSport
+ * project: SemesterWorkSport
  *
  * @author dinar
  * @version v0.1
  */
-public interface UsersService {
-    //Найдите пользователя по email
-    User getByEmail(String email);
+public interface UsersService<ID> {
 
-    List<User> getAll();
+    ID signUp(String firstname, String lastname, String email, String password);
 
-    void addUser(User user);
-
-    User getUser(Long id);
-
-    boolean deleteUser(String id);
+    ID signIn(String email, String password);
 
     boolean userIsExist(String email);
 
     String generateSecurePassword(String password);
 
+    Optional<User> getById(ID id);
 }

@@ -10,14 +10,12 @@ import lombok.*;
  * @version v0.1
  */
 
-@Setter
+@Data
 @Builder
-@Getter
-@ToString
-@EqualsAndHashCode
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 public class User {
+
     private Long id;
     private String name;
     private String surname;
@@ -32,4 +30,5 @@ public class User {
         this.password = password;
     }
 }
+
 

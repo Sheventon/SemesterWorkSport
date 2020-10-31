@@ -7,5 +7,10 @@
 
     <include file="data/changelog-2-user-table-create.sql" relativeToChangelogFile="true"/>
     <include file="data/changelog-3-sessions-table-create.sql" relativeToChangelogFile="true"/>
+    <include file="data/changelog-4-sport-table-create.sql" relativeToChangelogFile="true"/>
+    <include file="data/changelog-5-trainer-table-create.sql" relativeToChangelogFile="true"/>
+    <include file="data/changelog-6-section-table-create.sql" relativeToChangelogFile="true"/>
+    <include file="data/changelog-7-record-table-create.sql" relativeToChangelogFile="true"/>
+    <include file="data/changelog-8-data-insert.sql" relativeToChangelogFile="true"/>
 
 </databaseChangeLog>

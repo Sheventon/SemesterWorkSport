@@ -1,7 +1,6 @@
 package servlets;
 
-import model.User;
-import service.AuthenticationService;
+import service.CookieService;
 import service.UsersService;
 import service.webapputils.AlertUtils;
 
@@ -25,14 +24,14 @@ import java.io.IOException;
 public class SignUpServlet extends HttpServlet {
 
     private static final String USER_ID = "user_id";
-    UsersService usersService;
-    AuthenticationService authenticationService;
+    private UsersService<Long> usersService;
+    private CookieService<Long> cookieService;
 
     @Override
     public void init(ServletConfig config) throws ServletException {
         ServletContext servletContext = config.getServletContext();
-        usersService = (UsersService) servletContext.getAttribute("userService");
-        authenticationService = (AuthenticationService) servletContext.getAttribute("authenticationService");
+        usersService = (UsersService<Long>) servletContext.getAttribute("usersService");
+        cookieService = (CookieService<Long>) servletContext.getAttribute("cookieService");
     }
 
     @Override
@@ -43,25 +42,23 @@ public class SignUpServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setCharacterEncoding("UTF-8");
+
         String name = request.getParameter("name").trim();
         String surname = request.getParameter("surname").trim();
         String email = request.getParameter("email").trim();
         String password = request.getParameter("password").trim();
         String checkbox = request.getParameter("remember_me");
 
-        User user = new User(name, surname, email, usersService.generateSecurePassword(password));
-
         if (!usersService.userIsExist(email)) {
-            usersService.addUser(user);
+            Long userId = usersService.signUp(name, surname, email, password);
             if (checkbox != null) {
-                authenticationService.rememberUser(request, response, email);
+                cookieService.rememberUser(response, userId);
             }
-            request.getSession().setAttribute(USER_ID, usersService.getByEmail(email).getId());
+            request.getSession().setAttribute(USER_ID, userId);
             response.sendRedirect("/account");
         } else {
-            AlertUtils.show(response.getWriter(), "User with this email already exists.", "/login");
-
+            AlertUtils.show(response.getWriter(),"User with this email already exist", "/login");
+            response.sendRedirect("/login");
         }
     }
 }

@@ -1,6 +1,7 @@
 package repositories;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * created: 14-10-2020 - 22:07
@@ -9,14 +10,15 @@ import java.util.List;
  * @author dinar
  * @version v0.1
  */
-public interface CrudRepository<T> {
+public interface CrudRepository<T, ID> {
+
     void save(T entity);
 
     void delete(T entity);
 
     void update(T entity);
 
-    T findById(Long id);
-
     List<T> findAll();
+
+    Optional<T> findById(ID id);
 }

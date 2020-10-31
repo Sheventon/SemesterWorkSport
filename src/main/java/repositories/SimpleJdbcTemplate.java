@@ -35,16 +35,18 @@ public class SimpleJdbcTemplate {
                 T entity = rowMapper.mapRow(resultSet);
                 resultList.add(entity);
             }
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+        } catch (SQLException e) {
+            throw new IllegalStateException(e);
         }
         return resultList;
     }
 
 
-    public void updateQuery(String sql, Object... args) {
+    public Long updateQuery(String sql, Object... args) {
         try (Connection connection = dataSource.getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+
+             PreparedStatement preparedStatement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+
             for (int i = 0; i < args.length; i++) {
                 if (args[i] == null) {
                     preparedStatement.setNull(i + 1, Types.OTHER);
@@ -52,7 +54,17 @@ public class SimpleJdbcTemplate {
                     preparedStatement.setObject(i + 1, args[i]);
                 }
             }
+
             preparedStatement.executeUpdate();
+
+            try (ResultSet generatedKeys = preparedStatement.getGeneratedKeys()) {
+                if (generatedKeys.next()) {
+                    return generatedKeys.getLong(1);
+                }
+            }
+
+            return null;
+
         } catch (SQLException e) {
             throw new IllegalStateException(e);
         }
