@@ -12,5 +12,6 @@
     <include file="data/changelog-6-section-table-create.sql" relativeToChangelogFile="true"/>
     <include file="data/changelog-7-record-table-create.sql" relativeToChangelogFile="true"/>
     <include file="data/changelog-8-data-insert.sql" relativeToChangelogFile="true"/>
+    <include file="data/changelog-9-timetable-table-create.sql" relativeToChangelogFile="true"/>
 
 </databaseChangeLog>
