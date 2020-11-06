@@ -181,6 +181,7 @@ a:hover {
         flex-direction: column;
         position: fixed;
         visibility: hidden;
+        overflow: hidden;
         top: 0;
         left: 0;
         width: 100%;
@@ -223,5 +224,11 @@ a:hover {
 @media screen and (min-width: 941px) {
     .menu__btn {
         display: none;
+    }
+}
+
+@media screen and (max-height: 329px){
+    .menu__box {
+        overflow: scroll;
     }
 }

@@ -73,11 +73,20 @@ html, body {
     margin: 3% 5%;
 }
 
+.our-plus-block {
+    transition: all 0.35s ease;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
 .our-plus-block:hover {
-    animation-name: zoom;
-    animation-duration: 0.5s;
-    animation-iteration-count: 1;
-    animation-fill-mode: forwards;
+    transition: all .2s ease-out;
+    -webkit-transform: scale(0.96);
+    transform: scale(0.96);
+    cursor: pointer;
+    font-smoothing: antialiased;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 .plus-title, .sign-up {
@@ -97,13 +106,6 @@ html, body {
     padding-bottom: 6%;
 }
 
-.our-plus-text:hover {
-    /*animation-name: zoom;
-    animation-duration: 0.5s;
-    animation-iteration-count: 1;
-    animation-fill-mode: forwards;*/
-}
-
 .sign-up {
     padding-bottom: 5%;
 }
@@ -121,24 +123,20 @@ html, body {
     user-select: none;
     line-height: 1.25;
     border-radius: 0.25rem;
+    transition: all 0.35s ease;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 .sign-up-button:hover {
     color: #ffffff;
-    animation-name: zoom;
-    animation-duration: 0.5s;
-    animation-iteration-count: 1;
-    animation-fill-mode: forwards;
-}
-
-@keyframes zoom {
-    0% {
-        transform: scale(1);
-    }
-
-    100% {
-        transform: scale(1.05)
-    }
+    transition: all .2s ease-out;
+    -webkit-transform: scale(0.96);
+    transform: scale(0.96);
+    cursor: pointer;
+    font-smoothing: antialiased;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 

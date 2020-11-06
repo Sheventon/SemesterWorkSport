@@ -16,9 +16,11 @@ html, body {
     padding-top: 67px;
     padding-left: 5%;
     padding-right: 5%;
-    color: rgba(222, 184, 135, 1);
+    color: rgba(230, 230, 230, 1);
     display: grid;
-    grid-template-columns: 35% 30% 35%;
+    grid-template-columns: 50% 15% 35%;
+    z-index: 1;
+    position: relative;
 }
 
 .section-1, .section-2, .section-3 {
@@ -26,22 +28,14 @@ html, body {
 }
 
 .section-1, .section-3 {
-    background: rgba(38, 51, 46, 0.8);
+    background: rgba(30, 30, 30, 0.8);
     background-size: cover;
     min-height: calc(100vh - 67px);
 }
 
-.profile-image {
-    content: url("../img/profile_photo.jpg");
-    width: 200px;
-    height: 200px;
-    margin: 0 auto;
-    margin-top: 5%;
-}
-
 h3 {
     margin: 0 auto;
-    font-size: 40px;
+    font-size: 43px;
 }
 
 h4 {
@@ -50,22 +44,116 @@ h4 {
 }
 
 p {
-    font-size: 20px;
+    font-size: 25px;
     margin: 0;
 }
 
+.info {
+    padding-top: 50px;
+}
+
 .email {
-    font-size: 16px;
+    font-size: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.age {
+    padding-top: 10px;
+}
+
+.wrapper {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    z-index: 200;
+    display: none;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.95);
+}
+
+.form {
+    /*
+    margin-top: 50px;
+     */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#update-form {
+    width: 550px;
+    padding: 25px;
+    margin: 0 auto;
+    justify-content: center;
+    text-align: center;
+    border: 4px #ffffff solid;
+}
+
+.update {
+    margin-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px #ffffff dashed;
 }
 
 .section-3 h4 {
-    font-size: 25px;
+    font-size: 19px;
+}
+
+.section-3 p {
+    font-size: 14px;
 }
 
 .timetable-data {
     display: grid;
     grid-template-rows: 16% 16% 16% 16% 16% 16%;
     position: relative;
+}
+
+.wrap {
+    width: 210px;
+    transition: all 0.35s ease;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.wrap:hover {
+    transition: all .2s ease-out;
+    -webkit-transform: scale(0.96);
+    transform: scale(0.96);
+    cursor: pointer;
+    font-smoothing: antialiased;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.judo {
+    background: #bd70bdff;
+}
+
+.basketball {
+    background: #f58c1e;
+}
+
+.football {
+    background: #57bf33;
+}
+
+.swimming {
+    background: #28c8c8;
+}
+
+.boxing {
+    background: #d21717;
+}
+
+.boxing:hover {
+    color: #ffffff;
+}
+
+.volleyball {
+    background: #cbca1c;
 }
 
 #div1 {
@@ -82,7 +170,12 @@ p {
     margin: 0;
 }
 
+.sections {
+    margin-top: 20px;
+}
+
 .btn {
+    width: 210px;
     border: none;
     display: block;
     text-align: center;
@@ -90,22 +183,73 @@ p {
     text-transform: uppercase;
     outline: none;
     overflow: hidden;
-    color: #ffffff;
+    color: #000000;
     font-weight: 700;
     font-size: 15px;
-    background: rgba(222, 184, 135, 0.7);
+    background: rgba(255, 255, 255, 0.7);
     padding: 15px 30px;
     margin: 0 auto;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.6);
+    transition: all 0.35s ease;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+#timetable-button {
+    margin-bottom: 20px;
+}
+
+.form-btn, .cancel-btn, .reset-btn {
+    margin-bottom: 10px;
+    padding: 15px 20px;
+}
+
+.btn:hover {
+    transition: all .2s ease-out;
+    -webkit-transform: scale(0.93);
+    transform: scale(0.93);
+    cursor: pointer;
+    font-smoothing: antialiased;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 .timetable-data {
     padding-bottom: 5%;
 }
 
-@media screen and (max-width: 750px) {
+label {
+    color: rgba(255, 255, 255, 0.8);
+    text-transform: uppercase;
+    padding: 5px 10px;
+    display: block;
+    font-size: 14px;
+}
+
+input[type="text"], input[type="password"] {
+    width: 500px;
+    color: #fff;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 1px;
+    background: transparent;
+    padding: 5px 10px;
+    border: none;
+    border-bottom: 2px solid #ffffff;
+    outline: none;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+
+input:active, input:focus {
+    border-bottom: 0.12em solid #ffffff;
+    box-shadow: 0 2px 2px -2px #ffffff;
+}
+
+@media screen and (max-width: 800px) {
     .content {
         display: block;
+        height: 100%;
     }
 
     .main {
@@ -113,13 +257,51 @@ p {
         padding-top: 0;
     }
 
+    .info {
+        padding-top: 20px;
+    }
+
+    .section-1, .section-3 {
+        min-height: auto;
+        padding-bottom: 51px;
+    }
+
     .section-1 {
-        border-bottom: 2px solid #f2f2f2;
-        min-height: 100%;
+        border-bottom: 2px solid #ffffff;
     }
 
     .section-3 {
-        min-height: 100%;
+        height: auto;
+    }
+}
+
+@media screen and (max-width: 630px) {
+    #update-form {
+        width: 220px;
+        padding: 20px;
+    }
+
+    .btn {
+        width: 180px;
+        padding: 10px 20px;
+    }
+
+    input[type="text"], input[type="password"] {
+        width: 140px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    h3 {
+        font-size: 30px;
+    }
+
+    h4 {
+        font-size: 25px;
+    }
+
+    .email {
+        font-size: 15px;
     }
 }
 
@@ -132,5 +314,16 @@ p {
 
     header {
         min-width: 280px;
+    }
+}
+
+@media screen and (max-height: 600px) {
+    .wrapper {
+        height: 100%;
+        overflow: auto;
+    }
+
+    .form {
+        top: 100px;
     }
 }

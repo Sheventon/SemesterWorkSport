@@ -1,0 +1,23 @@
+.section-1 {
+    background-image: url("../img/judo/judo_section.jpg");
+}
+
+.plus-icon-1 {
+    content: url("../img/judo/karate.png");
+}
+
+.plus-icon-2 {
+    content: url("../img/judo/taekwondo.png");
+}
+
+.plus-icon-3 {
+    content: url("../img/judo/wrestling.png");
+}
+
+.plus-icon-4 {
+    content: url("../img/judo/kung-fu.png");
+}
+
+.sign-up-button {
+    background: #deb887;
+}

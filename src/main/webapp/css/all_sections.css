@@ -2,17 +2,152 @@ html, body {
     margin: 0;
     padding: 0;
     font-family: 'SF Pro Display', sans-serif;
+    font-size: 17px;
+    background: #063c4a;
 }
 
 .main {
-    padding-top: 67px;
+    padding-top: 75px;
 }
 
 .section {
-    margin-top: 170px;
+    padding: 20px;
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.section:hover {
+    color: #ffffff;
+}
+
+.descr {
+    margin-left: 10%;
+    margin-right: 10%;
+    height: 90px;
+    transition: all 0.35s ease;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    vertical-align: center;
+}
+
+.descr:hover {
+    transition: all .2s ease-out;
+    -webkit-transform: scale(0.98);
+    transform: scale(0.98);
+    cursor: pointer;
+    font-smoothing: antialiased;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 .section-description {
-    margin-left: 10%;
-    margin-right: 10%;
+    margin-left: 170px;
+    height: 90px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.football {
+    background: #57bf33;
+}
+
+.basketball {
+    background: #f58c1e;
+}
+
+.volleyball {
+    background: #e1e02b;
+}
+
+.boxing {
+    background: #ff0000;
+}
+
+.swimming {
+    background: #35e1e0;
+}
+
+.judo {
+    background: #bd70bdff;
+}
+
+.image {
+    width: 160px;
+    height: 90px;
+    float: left;
+}
+
+.section-image-1 {
+    content: url("../img/football/football_section.jpg");
+}
+
+.section-image-2 {
+    content: url("../img/basketball/basketball_section.jpg");
+}
+
+.section-image-3 {
+    content: url("../img/volleyball/volleyball_section.jpg");
+}
+
+.section-image-4 {
+    content: url("../img/boxing/boxing_section.jpg");
+}
+
+.section-image-5 {
+    content: url("../img/swimming/swimming_section.jpg");
+}
+
+.section-image-6 {
+    content: url("../img/judo/judo_section.jpg");
+}
+
+@media screen and (max-width: 850px) {
+    body {
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 670px) {
+    .descr {
+        margin-left: 3%;
+        margin-right: 3%;
+        height: 120px;
+
+        /*display: flex;
+        flex-direction: column;
+        justify-content: center;*/
+    }
+
+    .section-description {
+        height: 120px;
+    }
+
+    .image {
+        height: 80px;
+        width: 150px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        padding-left: 5px;
+    }
+}
+
+@media screen and (max-width: 470px) {
+    .image {
+        height: 0;
+        width: 0;
+    }
+
+    .football, .basketball, .volleyball, .boxing, .swimming, .judo {
+        content: none;
+    }
+
+    .section-description {
+        margin-left: 0;
+    }
 }
