@@ -3,12 +3,19 @@ function email_validator() {
     var email = document.getElementById("email").value;
     var email_message = document.getElementById("email-message");
     var pattern = /^[^ ]+@[^ ]+\.[a-z]{2,4}$/;
-    if (email.match(pattern)) {
+    if (email.match(pattern) && checkEmail()) {
         form.classList.add("valid");
         form.classList.remove("invalid");
         email_message.classList.remove("visible");
         email_message.innerHTML = "";
         return true;
+    } else if (email.match(pattern) && !checkEmail()) {
+        alert("this email is already use");
+        form.classList.remove("valid");
+        form.classList.add("invalid");
+        email_message.innerHTML = "Данный адрес уже используется";
+        email_message.classList.add("visible");
+        return false;
     } else if (email === "") {
         form.classList.remove("valid");
         form.classList.remove("invalid");
@@ -21,6 +28,25 @@ function email_validator() {
         email_message.innerHTML = "Введите корректный адрес";
         email_message.classList.add("visible");
         return false;
+    }
+}
+
+function checkEmail() {
+    const email = document.getElementById('email');
+    const xhr = new XMLHttpRequest();
+
+    xhr.open("GET", "http://localhost:8080/check_email?email=" + email.value, false);
+    xhr.send();
+
+    if (xhr.status !== 200) {
+        alert("...Something went wrong...");
+    } else {
+        const response = xhr.responseText;
+        if (response === "incorrect") {
+            alert("This email is already in use");
+            return false;
+        }
+        return true;
     }
 }
 
@@ -62,23 +88,6 @@ function surname_validator() {
     }
 }
 
-/*function select_validator() {
-    var form = document.getElementById("form");
-    var select = document.getElementById("section");
-    var value = select.options[select.selectedIndex].value;
-    var select_message = document.getElementById("select-message");
-    if (value == null) {
-        select_message.classList.add("visible");
-        select_message.innerHTML = "Пожалуйста, выберите секцию";
-        return false;
-    } else {
-        select_message.classList.remove("visible");
-        select_message.innerHTML = "";
-        return true;
-    }
-}*/
-
-
 function submit_validator() {
     var form = document.getElementById("form");
     var password = document.getElementById("password").value;
@@ -97,19 +106,6 @@ function login_validator() {
     if (email_validator() && password.length > 0) {
         form.submit();
     } else if (email_validator() == null || password === "") {
-        alert("Пожалуйста, заполните все поля");
-    } else {
-
-    }
-}
-
-function recording_validator() {
-    var form = document.getElementById("recording-form");
-    //var select = document.getElementById("section").value;
-    if (name_validator() && surname_validator() && email_validator()) {
-        alert("GOOD JOB");
-        form.submit();
-    } else if (name_validator() == null || surname_validator() == null || email_validator() == null) {
         alert("Пожалуйста, заполните все поля");
     } else {
 

@@ -1,0 +1,23 @@
+.section-1 {
+    background-image: url("../img/swimming/swimming_section.jpg");
+}
+
+.plus-icon-1 {
+    content: url("../img/swimming/pool.png");
+}
+
+.plus-icon-2 {
+    content: url("../img/swimming/children.png");
+}
+
+.plus-icon-3 {
+    content: url("../img/swimming/winner.png");
+}
+
+.plus-icon-4 {
+    content: url("../img/swimming/swimming.png");
+}
+
+.sign-up-button {
+    background: #6894cf;
+}

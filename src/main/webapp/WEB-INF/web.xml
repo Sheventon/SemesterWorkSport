@@ -24,5 +24,14 @@
         <filter-name>AccountFilter</filter-name>
         <url-pattern>/account</url-pattern>
     </filter-mapping>
+
+    <error-page>
+        <error-code>404</error-code>
+        <location>/html/404_page.html</location>
+    </error-page>
+    <error-page>
+        <error-code>500</error-code>
+        <location>/html/500_page.html</location>
+    </error-page>
 </web-app>
 

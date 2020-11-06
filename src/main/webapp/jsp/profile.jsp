@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/profile.css">
     <script src="../js/open_hide_window.js"></script>
-
+    <link rel="shortcut icon" href="../img/icon2.png" type="image/x-icon">
 </head>
 <%
     List<String> userSections = (List<String>) request.getAttribute("sections");
@@ -45,7 +45,7 @@
             <li><a class="menu__item" href="/sections">Секции</a></li>
             <li><a class="menu__item" href="/timetable">Расписание</a></li>
             <li><a class="menu__item" href="#">Тренеры</a></li>
-            <li><a class="menu__item" href="#">Достижения</a></li>
+            <li><a class="menu__item" href="/recording">Записаться</a></li>
             <li><a class="menu__item" href="mailto:tores.fernando.real@gmail.com">Написать на почту</a></li>
             <li><a class="menu__item" href="/out"><span class="red">Выйти</span></a></li>
         </ul>
@@ -56,21 +56,26 @@
 
     <div class="content">
         <div class="section-1">
-            <div class="profile-image"></div>
             <h3>${requestScope.name} ${requestScope.surname} ${requestScope.patronymic}</h3>
+            <p class="age">19 лет</p>
+            <div class="update">
+                <input type="button" class="btn update-btn" value="Редактировать"
+                       onclick="update_visibility('wrapper')"/>
+            </div>
             <p class="email">${requestScope.email}</p>
             <div class="sections">
                 <h4>Секции</h4>
-<%--                <p>Мини-футбол</p>--%>
-<%--                <p>Баскетбол</p>--%>
-<%--                <p>Бокс</p>--%>
-<%--                <p>Плавание</p>--%>
-<%--                <p>Дзюдо</p>--%>
-<%--                <p>Волейбол</p>--%>
+                <%--                <p>Мини-футбол</p>--%>
+                <%--                <p>Баскетбол</p>--%>
+                <%--                <p>Бокс</p>--%>
+                <%--                <p>Плавание</p>--%>
+                <%--                <p>Дзюдо</p>--%>
+                <%--                <p>Волейбол</p>--%>
                 <%
                     for (String section : userSections) {
                 %>
-                    <p><%=section%></p>
+                <p><%=section%>
+                </p>
                 <%
                     }
                 %>
@@ -82,51 +87,78 @@
 
         <div class="section-3">
             <h3>Расписание</h3>
-            <input class="btn" type="button" id="timetable-button" value="Показать" onclick="toogle_visibility('div1')">
+            <input class="btn" type="button" id="timetable-button" value="Показать"
+                   onclick="toogle_visibility('div1')">
             <div class="timetable-data" id="div1">
                 <div class="data">
-                    <div class="wrap">
+                    <div class="wrap football">
                         <h4>Мини-футбол</h4>
-                        <p>понедельник, четверг</p>
-                        <p class="time">16:30 - 18:30</p>
+                        <p>Понедельник 15:30 - 17:00</p>
+                        <p>Четверг 14:00 - 15:30</p>
+                        <p>Суббота 14:00 - 15:30</p>
                     </div>
                 </div>
                 <div class="data">
-                    <div class="wrap">
+                    <div class="wrap basketball">
                         <h4>Баскетбол</h4>
-                        <p>вторник, пятница</p>
-                        <p class="time">17:00 - 18:30</p>
+                        <p>Понедельник 17:00 - 18:30</p>
+                        <p>Среда 17:00 - 18:30</p>
+                        <p>Пятница 18:30 - 20:00</p>
                     </div>
                 </div>
                 <div class="data">
-                    <div class="wrap">
+                    <div class="wrap boxing">
                         <h4>Бокс</h4>
-                        <p>среда, воскресенье</p>
-                        <p class="time">18:00 - 20:00</p>
+                        <p>Понедельник 18:30 - 20:00</p>
+                        <p>Среда 18:30 - 20:00</p>
+                        <p>Пятница 20:00 - 21:30</p>
                     </div>
                 </div>
                 <div class="data">
-                    <div class="wrap">
+                    <div class="wrap swimming">
                         <h4>Плавание</h4>
-                        <p>среда, воскресенье</p>
-                        <p class="time">18:00 - 20:00</p>
+                        <p>Вторник 18:30 - 20:00</p>
+                        <p>Четверг 17:00 - 18:30</p>
+                        <p>Суббота 15:30 - 17:00</p>
                     </div>
                 </div>
                 <div class="data">
-                    <div class="wrap">
+                    <div class="wrap volleyball">
                         <h4>Волейбол</h4>
-                        <p>среда, воскресенье</p>
-                        <p class="time">18:00 - 20:00</p>
+                        <p>Вторник 14:00 - 15:30</p>
+                        <p>Четверг 20:00 - 21:30</p>
+                        <p>Воскресенье 14:00 - 15:30</p>
                     </div>
                 </div>
                 <div class="data">
-                    <div class="wrap">
+                    <div class="wrap judo">
                         <h4>Дзюдо</h4>
-                        <p>среда, воскресенье</p>
-                        <p class="time">18:00 - 20:00</p>
+                        <p>Вторник 15:30 - 17:00</p>
+                        <p>Среда 20:00 - 21:30</p>
+                        <p>Пятница 15:30 - 17:00</p>
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <div class="wrapper" id="wrapper">
+        <div class="form" id="upd">
+            <form id="update-form" action="/account" method="post">
+                <label for="lastname">Отчество</label>
+                <input id="lastname" type="text" name="lastname" placeholder="По желанию"/>
+
+                <label for="age">Возраст</label>
+                <input id="age" type="text" name="age" placeholder="По желанию"/>
+
+                <label for="new-password">Новый пароль</label>
+                <input id="new-password" type="password" name="password" placeholder="По желанию"/>
+
+                <input type="submit" class="btn form-btn" name="submit" value="Редактировать"/>
+                <input type="reset" class="btn reset-btn" value="Сбросить">
+                <input type="button" class="btn cancel-btn" value="Закрыть" onclick="hide_update_visibility('wrapper')">
+
+            </form>
         </div>
     </div>
 </div>
