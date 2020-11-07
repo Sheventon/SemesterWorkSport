@@ -18,13 +18,12 @@
     <div class="form">
         <form class="login-for" id="form" action="/login" method="post">
             <input type="email" id="email" placeholder="Электронная почта" name="email"
-                   onblur="email_validator()"
-                   onmouseover="email_validator()" required/>
+                   required/>
             <span id="email-message"></span>
             <input type="password" placeholder="Пароль" id="password" name="password" required=""/>
             <input class="remember-input" type="checkbox" id="remember" name="remember_me">
             <label for="remember" class="remember-label">Запомнить меня</label>
-            <input type="button" class="input-button" value="ВОЙТИ" onclick="login_validator()">
+            <input type="submit" class="input-button" value="ВОЙТИ">
             <p class="message">У меня нет аккаунта <a href="/signup">Создать аккаунт</a></p>
         </form>
     </div>

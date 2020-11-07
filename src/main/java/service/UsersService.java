@@ -22,4 +22,8 @@ public interface UsersService<ID> {
     String generateSecurePassword(String password);
 
     Optional<User> getById(ID id);
+
+    Optional<User> getByEmail(String email);
+
+    boolean updateUserData(ID id, String patronymic, String password);
 }

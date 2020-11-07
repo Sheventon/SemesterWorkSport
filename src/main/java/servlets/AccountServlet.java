@@ -1,10 +1,9 @@
 package servlets;
 
 import model.User;
-import service.AuthenticationService;
-import service.CookieService;
 import service.RecordsService;
 import service.UsersService;
+import service.webapputils.AlertUtils;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
@@ -30,6 +29,7 @@ public class AccountServlet extends HttpServlet {
 
     private UsersService<Long> usersService;
     private RecordsService<Long> recordsService;
+
     @Override
     public void init(ServletConfig config) throws ServletException {
         ServletContext servletContext = config.getServletContext();
@@ -56,5 +56,18 @@ public class AccountServlet extends HttpServlet {
         });
 
         request.getServletContext().getRequestDispatcher("/jsp/profile.jsp").forward(request, response);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String patronymic = request.getParameter("patronymic").trim();
+        String password = request.getParameter("password").trim();
+        Long id = (Long) request.getSession().getAttribute("user_id");
+
+        if (!usersService.updateUserData(id, patronymic, password)) {
+            AlertUtils.show(response.getWriter(), "Please enter correct data", "/account");
+        } else {
+            response.sendRedirect("/account");
+        }
     }
 }

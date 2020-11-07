@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebFilter(urlPatterns = {"/account"})
+@WebFilter(urlPatterns = {"/account", "/sections"})
 public class AccountFilter implements Filter {
 
     @Override
