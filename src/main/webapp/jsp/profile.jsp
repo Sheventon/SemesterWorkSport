@@ -26,7 +26,7 @@
 </head>
 <%
     List<String> userSections = (List<String>) request.getAttribute("sections");
-
+    String patronymic = (String) request.getAttribute("patronymic");
 //    String name = String.valueOf(request.getAttribute("name"));
 //    String surname = String.valueOf(request.getAttribute("surname"));
 //    String patronymic = String.valueOf(request.getAttribute("patronymic"));
@@ -44,7 +44,7 @@
             <li><a class="menu__item" href="/home"><span class="red">Домой</span></a></li>
             <li><a class="menu__item" href="/sections">Секции</a></li>
             <li><a class="menu__item" href="/timetable">Расписание</a></li>
-            <li><a class="menu__item" href="#">Тренеры</a></li>
+            <li><a class="menu__item" href="/coaches">Тренеры</a></li>
             <li><a class="menu__item" href="/recording">Записаться</a></li>
             <li><a class="menu__item" href="mailto:tores.fernando.real@gmail.com">Написать на почту</a></li>
             <li><a class="menu__item" href="/out"><span class="red">Выйти</span></a></li>
@@ -57,7 +57,6 @@
     <div class="content">
         <div class="section-1">
             <h3>${requestScope.name} ${requestScope.surname} ${requestScope.patronymic}</h3>
-            <p class="age">19 лет</p>
             <div class="update">
                 <input type="button" class="btn update-btn" value="Редактировать"
                        onclick="update_visibility('wrapper')"/>
@@ -145,11 +144,11 @@
     <div class="wrapper" id="wrapper">
         <div class="form" id="upd">
             <form id="update-form" action="/account" method="post">
-                <label for="lastname">Отчество</label>
-                <input id="lastname" type="text" name="lastname" placeholder="По желанию"/>
+                <label for="patronymic">Отчество</label>
+                <input id="patronymic" type="text" name="patronymic" placeholder="<%=patronymic == null ? "По желанию" : patronymic %>"/>
 
-                <label for="age">Возраст</label>
-                <input id="age" type="text" name="age" placeholder="По желанию"/>
+<%--                <label for="age">Возраст</label>--%>
+<%--                <input id="age" type="text" name="age" placeholder="По желанию"/>--%>
 
                 <label for="new-password">Новый пароль</label>
                 <input id="new-password" type="password" name="password" placeholder="По желанию"/>

@@ -64,5 +64,29 @@ public class UsersServiceImpl implements UsersService<Long> {
     public Optional<User> getById(Long id) {
         return usersRepository.findById(id);
     }
+
+    @Override
+    public Optional<User> getByEmail(String email) {
+        return usersRepository.findByEmail(email);
+    }
+
+    @Override
+    public boolean updateUserData(Long id, String patronymic, String password) {
+        Optional<User> user = usersRepository.findById(id);
+
+        if (user.isPresent()) {
+            System.out.println(patronymic);
+            if (!patronymic.matches("[А-Я]([а-я]{1,30})")) {
+                return false;
+            }
+            if (password.length() > 0) {
+                user.get().setPassword(generateSecurePassword(password));
+            }
+            user.get().setPatronymic(patronymic);
+            usersRepository.update(user.get());
+            return true;
+        }
+        return false;
+    }
 }
 

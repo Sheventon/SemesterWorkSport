@@ -22,6 +22,8 @@ public class UsersRepositoryJdbcImpl implements UsersRepository {
     private static final String INSERT_USER = "insert into user(name, surname, patronymic, email, password) values (?, ?, ?, ?, ?)";
     // language=SQL
     private static final String SELECT_USER_BY_ID = "select * from user where id = ?";
+    // language=SQL
+    private static final String UPDATE_DATA = "update user set name = ?, surname = ?, patronymic = ?, email = ?, password = ? where  id = ?";
 
     private final SimpleJdbcTemplate template;
 
@@ -55,7 +57,13 @@ public class UsersRepositoryJdbcImpl implements UsersRepository {
 
     @Override
     public void update(User entity) {
-
+        template.updateQuery(UPDATE_DATA,
+                entity.getName(),
+                entity.getSurname(),
+                entity.getPatronymic(),
+                entity.getEmail(),
+                entity.getPassword(),
+                entity.getId());
     }
 
     @Override

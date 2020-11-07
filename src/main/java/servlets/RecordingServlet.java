@@ -47,7 +47,7 @@ public class RecordingServlet extends HttpServlet {
         if (recordsService.recordToSection(userId, section)) {
             response.sendRedirect("/home");
         } else {
-            AlertUtils.show(response.getWriter(), "Извините, но вы уже записаны на этот вид спорта", "/recording");
+            AlertUtils.show(response.getWriter(), "Sorry, you already have record on this kind of sport", "/recording");
         }
     }
 }
